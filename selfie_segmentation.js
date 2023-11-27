@@ -119,8 +119,6 @@
         void 0 === a.j && (a.j = document.createElement("canvas"));
         return new Promise(function (d) { a.j.height = a.h.canvas.height; a.j.width = a.h.canvas.width; a.j.getContext("2d", {}).drawImage(a.h.canvas, 0, 0, a.h.canvas.width, a.h.canvas.height); d(a.j) }) }
     function Yc(a, b) {
-        console.log(b);
-
         var c = a.h; if (void 0 === a.s) {
             var d = Tc(c, "\n  attribute vec2 aVertex;\n  attribute vec2 aTex;\n  varying vec2 vTex;\n  void main(void) {\n    gl_Position = vec4(aVertex, 0.0, 1.0);\n    vTex = aTex;\n  }", 0), e = Tc(c, "\n  precision mediump float;\n  varying vec2 vTex;\n  uniform sampler2D sampler0;\n  void main(){\n    vec4 texColor = texture2D(sampler0, vTex);\n texColor.a = texColor.a < 0.8 ? 0.0 : 1.0;\n gl_FragColor = texColor;\n  }", 1), g = c.createProgram(); c.attachShader(g, d); c.attachShader(g, e); c.linkProgram(g); if (!c.getProgramParameter(g, c.LINK_STATUS)) throw Error("Could not compile WebGL program.\n\n" +
                 c.getProgramInfoLog(g)); d = a.s = g; c.useProgram(d); e = c.getUniformLocation(d, "sampler0"); a.l = { O: c.getAttribLocation(d, "aVertex"), N: c.getAttribLocation(d, "aTex"), ya: e }; a.v = c.createBuffer(); c.bindBuffer(c.ARRAY_BUFFER, a.v); c.enableVertexAttribArray(a.l.O); c.vertexAttribPointer(a.l.O, 2, c.FLOAT, !1, 0, 0); c.bufferData(c.ARRAY_BUFFER, new Float32Array([-1, -1, -1, 1, 1, 1, 1, -1]), c.STATIC_DRAW); c.bindBuffer(c.ARRAY_BUFFER, null); a.u = c.createBuffer(); c.bindBuffer(c.ARRAY_BUFFER, a.u); c.enableVertexAttribArray(a.l.N); c.vertexAttribPointer(a.l.N,
